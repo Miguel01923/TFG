@@ -254,5 +254,3 @@ for graf in ["cpu", "ram", "disco", "red"]:
 ventana.mainloop()
 
 
-
-   #ESTO ES TODO AMIGOS :D
