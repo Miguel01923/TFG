@@ -252,3 +252,7 @@ for graf in ["cpu", "ram", "disco", "red"]:
     ).pack(pady=2)
 
 ventana.mainloop()
+
+
+
+   #ESTO ES TODO AMIGOS :D
