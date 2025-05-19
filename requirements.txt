@@ -1,0 +1,37 @@
+# Sistema Monitor - Requirements
+# Dependencias principales para el funcionamiento de la aplicación
+
+# Interfaz gráfica y temas
+sv-ttk>=2.6.0
+pillow>=10.0.0
+
+# Monitoreo del sistema
+psutil>=5.9.0
+cpuinfo>=9.0.0
+GPUtil>=1.4.0
+
+# Gráficas y visualización
+matplotlib>=3.7.0
+
+# Dependencias adicionales (usualmente incluidas con Python)
+# tkinter - incluido con Python estándar
+# threading - incluido con Python estándar  
+# queue - incluido con Python estándar
+# socket - incluido con Python estándar
+# platform - incluido con Python estándar
+# datetime - incluido con Python estándar
+# os - incluido con Python estándar
+# sys - incluido con Python estándar
+# time - incluido con Python estándar
+# re - incluido con Python estándar
+# shutil - incluido con Python estándar
+# concurrent.futures - incluido con Python 3.2+
+
+# Dependencias opcionales para compilación
+# pyinstaller>=5.0  # Descomenta para crear ejecutables
+
+# Notas de instalación:
+# 1. Python 3.7+ requerido
+# 2. En sistemas Linux puede requerir: sudo apt-get install python3-tk
+# 3. En macOS puede requerir: brew install python-tk
+# 4. Para Windows está incluido por defecto
