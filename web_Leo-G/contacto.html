@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Leo-G</title>
+    <link rel="shortcut icon" href="img/favicon-16x16.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-method {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-method:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .contact-method h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-method p {
+            color: #555;
+        }
+        
+        .contact-method a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-method a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-section {
+            padding: 4rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            color: var(--primary-color);
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .contact-hours {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .contact-hours p {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+        
+        .form-required {
+            color: var(--accent-color);
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">🦁</div>
+                <h1>Leo-G</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="caracteristicas.html">Características</a></li>
+                    <li><a href="descarga.html">Descargar</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                    <li><a href="rodemap.html">Rodemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h2>Contacta con Nosotros</h2>
+                <p>¿Tienes preguntas sobre Leo-G? ¿Necesitas ayuda técnica o quieres contribuir al proyecto? Estamos aquí para ayudarte. Ponte en contacto con nuestro equipo virtual a través de cualquiera de estos canales.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="contact-icon">✉️</div>
+                        <h3>Email</h3>
+                        <p>Para consultas generales:</p>
+                        <p><a href="mailto:info@leo-g.com">info@leo-g.com</a></p>
+                        <p>Para soporte técnico:</p>
+                        <p><a href="mailto:soporte@leo-g.com">soporte@leo-g.com</a></p>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">💬</div>
+                        <h3>Chat en Vivo</h3>
+                        <p>Nuestro chat está disponible de lunes a viernes, de 9:00 a 18:00 (CET).</p>
+                        <p><a href="#">Iniciar chat</a></p>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">🌐</div>
+                        <h3>Comunidad</h3>
+                        <p>Únete a nuestra comunidad de desarrolladores en GitHub:</p>
+                        <p><a href="https://github.com/Miguel01923/TFG" target="_blank">github.com/leo-g</a></p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon" title="Twitter">𝕏</a>
+                            <a href="#" class="social-icon" title="Discord">𝓓</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h3>Horario de Atención</h3>
+                        <p>Lunes a Viernes: 9:00 - 18:00 (CET)</p>
+                        <p>Sábados y Domingos: No disponible</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <p>Completa el formulario a continuación y te responderemos lo antes posible.</p>
+                    
+                    <div class="success-message" id="success-message">
+                        ¡Mensaje enviado con éxito! Te responderemos en breve.
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre <span class="form-required">*</span></label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email <span class="form-required">*</span></label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Categoría <span class="form-required">*</span></label>
+                            <select id="category" class="form-control" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="general">Consulta General</option>
+                                <option value="technical">Soporte Técnico</option>
+                                <option value="feedback">Sugerencias y Feedback</option>
+                                <option value="contribute">Quiero Contribuir al Proyecto</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje <span class="form-required">*</span></label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="checkbox" id="newsletter" checked>
+                            <label for="newsletter" style="display: inline;">Suscríbeme al boletín de Leo-G para recibir actualizaciones y novedades.</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>¿Leo-G es completamente gratuito?</h3>
+                        <p>Sí, Leo-G es un software de código abierto completamente gratuito. No hay cargos ocultos, suscripciones ni funciones premium de pago.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>¿Cómo puedo contribuir al proyecto?</h3>
+                        <p>Puedes contribuir de varias formas: reportando errores, mejorando la documentación, proponiendo nuevas características o enviando pull requests a nuestro repositorio de GitHub. Contacta con nosotros para más información.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>¿Cuánto tarda normalmente la respuesta a una consulta?</h3>
+                        <p>Nos esforzamos por responder a todas las consultas en un plazo de 24-48 horas laborables. Las consultas de soporte técnico pueden requerir más tiempo dependiendo de la complejidad.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>¿Ofrecen soporte personalizado para empresas?</h3>
+                        <p>Aunque Leo-G es principalmente un proyecto comunitario, podemos ofrecer asesoramiento y soporte para implementaciones empresariales. Contacta con nosotros para discutir tus necesidades específicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Leo-G</h3>
+                    <ul class="footer-links">
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                        <li><a href="prensa.html">Recursos para Prensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="caracteristicas.html">Características</a></li>
+                        <li><a href="novedades.html">Novedades</a></li>
+                        <li><a href="hoja-ruta.html">Hoja de Ruta</a></li>
+                        <li><a href="integraciones.html">Integraciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="documentacion.html">Documentación</a></li>
+                        <li><a href="tutoriales.html">Tutoriales</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="soporte.html">Centro de Ayuda</a></li>
+                        <li><a href="comunidad.html">Comunidad</a></li>
+                        <li><a href="seguridad.html">Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy;2025 Leo-G. Software Libre.| <a href="privacidad.html" style="color: #bdc3c7;">Política de Privacidad</a> | <a href="terminos.html" style="color: #bdc3c7;">Términos de Uso</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manejar el envío del formulario
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('success-message');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Aquí normalmente enviarías los datos a un servidor
+                    // Simulamos una respuesta exitosa después de 1 segundo
+                    setTimeout(function() {
+                        successMessage.style.display = 'block';
+                        contactForm.reset();
+                        
+                        // Ocultar el mensaje después de 5 segundos
+                        setTimeout(function() {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    }, 1000);
+                });
+            }
+            
+            // Animación para los elementos FAQ al hacer scroll
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            window.addEventListener('scroll', function() {
+                faqItems.forEach(item => {
+                    const itemPosition = item.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (itemPosition < screenPosition) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Inicializar con efecto
+            faqItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Disparar el evento scroll para inicializar
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>

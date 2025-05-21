@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar | Leo-G</title>
+    <link rel="shortcut icon" href="img/favicon-16x16.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--light-color);
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .download-options {
+            padding: 3rem 0;
+        }
+        
+        .download-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .download-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .download-card p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .version-info {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .requirements {
+            padding: 3rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .requirements-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+        
+        .requirements-content {
+            flex: 2;
+        }
+        
+        .requirements-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .requirements-image img {
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .requirements-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .installation-steps {
+            padding: 3rem 0;
+        }
+        
+        .step-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: var(--transition);
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .cta h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                padding: 1rem 0;
+                z-index: 100;
+            }
+            
+            nav ul.open {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .requirements-container {
+                flex-direction: column;
+            }
+            
+            .requirements-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .step-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            
+            .step-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">💻</div>
+                <h1>Leo-G</h1>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="caracteristicas.html">Características</a></li>
+                    <li><a href="descarga.html" class="active">Descargar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="rodemap.html">Rodemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Descarga Leo-G</h1>
+                <p>Obtén la última versión de Leo-G y comienza a optimizar el rendimiento de tu sistema hoy mismo.</p>
+            </div>
+        </section>
+
+        <section class="download-options">
+            <div class="container">
+                <h2 class="section-title">Elije tu Versión</h2>
+                <div class="download-grid">
+                    <div class="download-card">
+                        <div class="download-icon">🪟</div>
+                        <h3>Windows</h3>
+                        <p>Descarga Leo-G para Windows 11, Windows 10 y Windows 8.1</p>
+                        <a href="#" class="btn btn-primary">Descargar para Windows</a>
+                        <div class="version-info">Versión 2.4.7 (64-bit) - 24.5 MB</div>
+                    </div>
+                    <div class="download-card">
+                        <div class="download-icon">📦</div>
+                        <h3>Código Fuente</h3>
+                        <p>Accede al código fuente completo en nuestro repositorio de GitHub</p>
+                        <a href="https://github.com/Miguel01923/TFG" class="btn btn-primary">Ver en GitHub</a>
+                        <div class="version-info">Licencia GPL v3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements">
+            <div class="container">
+                <div class="requirements-container">
+                    <div class="requirements-content">
+                        <h2 class="section-title">Requisitos del Sistema</h2>
+                        <p>Para garantizar un funcionamiento óptimo de Leo-G, recomendamos que tu sistema cumpla con los siguientes requisitos mínimos:</p>
+                        <ul class="requirements-list">
+                            <li><strong>Procesador:</strong> Dual-core a 2.0 GHz o superior</li>
+                            <li><strong>Memoria RAM:</strong> 2 GB mínimo (4 GB recomendado)</li>
+                            <li><strong>Espacio en disco:</strong> 100 MB de espacio libre</li>
+                            <li><strong>Sistemas operativos:</strong> Windows 8.1, 10, 11</li>
+                            <li><strong>Permisos:</strong> Derechos de administrador para instalación y monitorización</li>
+                            <li><strong>Tarjeta gráfica:</strong> Compatible con OpenGL 2.0 o superior</li>
+                        </ul>
+                        <p>Para funcionalidades avanzadas como el monitoreo de GPU, se requiere hardware compatible con NVIDIA, AMD o Intel.</p>
+                    </div>
+                    <div class="requirements-image">
+                        <img src="img/sistemaejemplo.png" alt="Requisitos del Sistema" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="installation-steps">
+            <div class="container">
+                <h2 class="section-title">Guía de Instalación Rápida</h2>
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Descarga el Instalador</h3>
+                        <p>Selecciona la versión adecuada para tu sistema operativo y descarga el archivo de instalación desde esta página.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Ejecuta el Instalador</h3>
+                        <p>Haz doble clic en el archivo descargado y sigue las instrucciones del asistente de instalación. Es posible que necesites permisos de administrador.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Configuración Inicial</h3>
+                        <p>Al iniciar Leo-G por primera vez, un asistente te guiará para configurar las opciones básicas y detectar automáticamente tu hardware.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>¡Comienza a Usar Leo-G!</h3>
+                        <p>Una vez completada la configuración, podrás comenzar a monitorizar y optimizar el rendimiento de tu sistema con todas las herramientas que ofrece Leo-G.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        ¿Es Leo-G realmente gratuito y de código abierto? <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, Leo-G es completamente gratuito y de código abierto, distribuido bajo la licencia GPL v3. Esto significa que puedes usar, estudiar, modificar y distribuir el software libremente. Nuestro modelo se basa en contribuciones de la comunidad y donaciones voluntarias para mantener el desarrollo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        ¿Cómo puedo actualizar a la última versión? <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Leo-G incluye un sistema de actualización automática que te notificará cuando haya una nueva versión disponible. Simplemente haz clic en "Actualizar" cuando aparezca la notificación. Alternativamente, siempre puedes descargar la última versión desde esta página y reinstalarla sobre tu versión actual sin perder tu configuración.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        ¿Leo-G consume muchos recursos del sistema? <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, Leo-G está diseñado para ser ligero y eficiente. Utiliza menos del 1% de CPU en modo de monitorización normal y aproximadamente 100-150 MB de RAM. Incluso en equipos con recursos limitados, el impacto en el rendimiento es mínimo. Además, puedes configurar la frecuencia de actualización de la monitorización para reducir aún más el consumo de recursos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        ¿Qué debo hacer si mi hardware no es detectado correctamente? <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Si Leo-G no detecta correctamente algún componente de tu hardware, puedes intentar lo siguiente:<br>
+                        1. Actualiza a la última versión de Leo-G.<br>
+                        2. Asegúrate de tener instalados los controladores más recientes para tus componentes.<br>
+                        3. Ejecuta Leo-G con permisos de administrador.<br>
+                        4. Visita nuestro foro de soporte donde la comunidad y nuestro equipo pueden ayudarte con problemas específicos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        ¿Cómo puedo contribuir al proyecto? <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Hay muchas formas de contribuir a Leo-G:<br>
+                        1. Reportar bugs o sugerir mejoras en nuestro repositorio de GitHub.<br>
+                        2. Contribuir con código si tienes conocimientos de programación.<br>
+                        3. Ayudar con la traducción a otros idiomas.<br>
+                        4. Crear tutoriales o guías para otros usuarios.<br>
+                        5. Realizar una donación para apoyar el desarrollo continuo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>¿Listo para mejorar el rendimiento de tu sistema?</h2>
+                <p>Únete a más de 10.000 usuarios que ya disfrutan de Leo-G para monitorizar y optimizar sus equipos</p>
+                <a href="#" class="btn btn-primary btn-large">Descargar Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Leo-G</h3>
+                    <ul class="footer-links">
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                        <li><a href="prensa.html">Novedades</a></li>
+                        <li><a href="contribuir.html">Contribuir al Proyecto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="caracteristicas.html">Características</a></li>
+                        <li><a href="versiones.html">Versiones</a></li>
+                        <li><a href="novedades.html">Novedades</a></li>
+                        <li><a href="hoja-ruta.html">Hoja de Ruta</a></li>
+                        <li><a href="codigo-fuente.html">Código Fuente</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="documentacion.html">Documentación</a></li>
+                        <li><a href="tutoriales.html">Tutoriales</a></li>
+                        <li><a href="foros.html">Foros</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="glosario.html">Glosario</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Comunidad</h3>
+                    <ul class="footer-links">
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="soporte.html">Soporte</a></li>
+                        <li><a href="github.html">GitHub</a></li>
+                        <li><a href="discord.html">Discord</a></li>
+                        <li><a href="reportar-bug.html">Reportar Bug</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Leo-G. Software Libre.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('open');
+            });
+            
+            // Animación simple para las tarjetas de descarga
+            const downloadCards = document.querySelectorAll('.download-card');
+            
+            window.addEventListener('scroll', function() {
+                downloadCards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Inicializar con opacidad 0
+            downloadCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transition = 'opacity 0.6s ease';
+            });
+            
+            // Disparar el evento scroll para inicializar
+            window.dispatchEvent(new Event('scroll'));
+        });
+        
+        // Función para mostrar/ocultar respuestas de FAQ
+        function toggleFAQ(question) {
+            const answer = question.nextElementSibling;
+            const plusMinus = question.querySelector('span');
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                plusMinus.textContent = '+';
+            } else {
+                answer.classList.add('open');
+                plusMinus.textContent = '-';
+            }
+        }
+    </script>
+</body>
+</html>

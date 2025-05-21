@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión | Leo-G</title>
+    <link rel="shortcut icon" href="img/favicon-16x16.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding: 0 2rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            margin-left: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .benefits {
+            padding: 4rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .benefits-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .benefits-content {
+            flex: 1;
+        }
+        
+        .benefits-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .benefits-list {
+            margin: 2rem 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .check-icon {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .cta h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+            
+            .hero-content {
+                padding: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .benefits-container {
+                flex-direction: column-reverse;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">🦁</div>
+                <h1>Leo-G</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="caracteristicas.html">Características</a></li>
+                    <li><a href="descarga.html">Descargar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="rodemap.html">Rodemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Características</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Gestión de Hardware</h3>
+                        <p>Control sobre el hardware de tu equipo con gráficas detalladas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Análisis en Tiempo Real</h3>
+                        <p>Visualiza el rendimiento de tu equipo con Leo-G.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🪟</div>
+                        <h3>Funcional con windows 11</h3>
+                        <p>Úsalo con el sistema operativo más popular del mundo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>De código libre</h3>
+                        <p>Siéntete libre de editar y compartir nuevas versiones de Leo-G.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Con una estética personalizada</h3>
+                        <p>Por su capacidad de personalización de los colores.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3>Haz informes de manera sencilla</h3>
+                        <p>Haz informes con un solo click con nuestra app no tendras que escribir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container benefits-container">
+                <div class="benefits-content">
+                    <h2 class="section-title">Beneficios Comprobados</h2>
+                    <p>Nuestros clientes experimentan resultados desde el primer día</p>
+                    <ul class="benefits-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Totalmente gratuito</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>De codigo abierto</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Personalizable</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Capaz de enviar informes en PDF</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="benefits-image">
+                    <img src="img/logo_400x400_white_bg.jpg" alt="Beneficios de Leo-G" />
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>¿Listo para optimizar?</h2>
+                <p>Únete a más de 10.000 usuarios que ya han transformado su administración con Leo-G</p>
+                <a href="suscripcion.html" class="btn btn-primary">Comenzar Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Leo-G</h3>
+                    <ul class="footer-links">
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                        <li><a href="prensa.html">Sala de Prensa</a></li>
+                        <li><a href="empleo.html">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="caracteristicas.html">Características</a></li>
+                        <li><a href="precios.html">Planes y Precios</a></li>
+                        <li><a href="novedades.html">Novedades</a></li>
+                        <li><a href="hoja-ruta.html">Hoja de Ruta</a></li>
+                        <li><a href="integraciones.html">Integraciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="documentacion.html">Documentación</a></li>
+                        <li><a href="tutoriales.html">Tutoriales</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="glosario.html">Glosario</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="soporte.html">Centro de Ayuda</a></li>
+                        <li><a href="comunidad.html">Comunidad</a></li>
+                        <li><a href="estado.html">Estado del Servicio</a></li>
+                        <li><a href="seguridad.html">Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy;2025 Leo-G. Software Libre.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animación básica para elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            // Función simple para añadir efectos al hacer scroll
+            window.addEventListener('scroll', function() {
+                featureCards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Inicializar con opacidad 0
+            featureCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transition = 'opacity 0.5s ease';
+            });
+            
+            // Disparar el evento scroll para inicializar
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>

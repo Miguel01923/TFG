@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Características | Leo-G</title>
+    <link rel="shortcut icon" href="img/favicon-16x16.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--light-color);
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .features-detailed {
+            padding: 3rem 0;
+        }
+        
+        .feature-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .feature-content {
+            flex: 1;
+            padding: 0 2rem;
+        }
+        
+        .feature-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .feature-image img {
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .feature-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .feature-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .testimonials {
+            padding: 4rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+      
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .author-name {
+            font-weight: 600;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .cta h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--light-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .specs-table th {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+            padding: 1rem;
+        }
+        
+        .specs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .specs-table tr:hover {
+            background-color: #f5f9ff;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                padding: 1rem 0;
+                z-index: 100;
+            }
+            
+            nav ul.open {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .header-container {
+                flex-direction: row;
+            }
+            
+            .feature-section,
+            .feature-section:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-content {
+                padding: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .feature-image {
+                margin-top: 1.5rem;
+            }
+            
+            .feature-list li {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">🦁</div>
+                <h1>Leo-G</h1>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="caracteristicas.html" class="active">Características</a></li>
+                    <li><a href="descarga.html">Descargar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="rodemap.html">Rodemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Características Completas</h1>
+                <p>Descubre todas las herramientas y funcionalidades que Leo-G ofrece para optimizar tu sistema y mejorar la gestión del hardware de tu equipo.</p>
+            </div>
+        </section>
+
+        <section class="features-detailed">
+            <div class="container">
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>Panel de Control Inteligente</h2>
+                        <p>Visualiza y gestiona todos los componentes de tu equipo desde una única interfaz elegante y fácil de usar. El panel de control de Leo-G te ofrece información clara sobre el rendimiento actual de tu sistema.</p>
+                        <ul class="feature-list">
+                            <li>Métricas en tiempo real de CPU, GPU, memoria RAM y discos duros</li>
+                            <li>Gráficos interactivos con histórico de uso y rendimiento</li>
+                            <li>Vista general del sistema con estado de cada componente</li>
+                            <li>Compatible con múltiples monitores y resoluciones</li>
+                        </ul>
+                        
+                    </div>
+                    <div class="feature-image">
+                        <img src="img/demo.1.png" alt="Panel de Control Leo-G" />
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>Personaliza tu centro de control</h2>
+                            <p>Transforma el monitoreo de tu sistema con una experiencia visual a tu medida. Elige entre temas predefinidos o crea tu paleta de colores única.</p>
+                                <ul class="feature-list">
+                                    <li>Control inteligente de ventiladores con perfiles personalizables por aplicación</li>
+                                    <li>Exportación de datos en múltiples formatos para análisis externos</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="img/color.png" alt="Monitorización de Temperaturas" />
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>Diagnóstico y Optimización</h2>
+                        <p>Leo-G comprueba el harware que tienes en tu sistema.</p>
+                        <ul class="feature-list">
+                            <li>Revisa tu CPU</li>
+                            <li>RAM</li>
+                            <li>Monitorea tu sistema de red</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="img/sistema.png" alt="Diagnóstico y Optimización" />
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>Software Libre y de Código Abierto</h2>
+                        <p>Leo-G abraza la filosofía de libertad digital, ofreciéndote una solución completamente abierta y transparente que respeta tu privacidad y fomenta la colaboración comunitaria.</p>
+                            <ul class="feature-list">
+                                <li>Código fuente 100% abierto bajo licencia GPL v3, accesible en GitHub</li>
+                                <li>Desarrollo colaborativo con contribuciones de una comunidad global activa</li>
+                                <li>Sin telemetría oculta ni recopilación de datos del usuario</li>
+                                <li>APIs documentadas para facilitar extensiones y módulos de terceros</li>
+                                <li>Actualizaciones transparentes revisadas por la comunidad para garantizar seguridad</li>
+                                <li>Compatibilidad con estándares abiertos y formatos de archivo libres</li>
+                                <li>Independencia de servicios propietarios y empresas de tecnología centralizadas</li>
+                                <li>Soporte multilingüe impulsado por traducciones voluntarias de la comunidad</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="img/logo.4.png" alt="Interfaz Personalizable" />
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <div class="feature-content">
+                        <h2>Descarga las estadisticas de tu sistema</h2>
+                        <p> Esta caracteristica única.</p>
+                        <ul class="feature-list">
+                            <li>Revissa las graficas</li>
+                            <li>Comprueba la media de uso</li>
+                            <li>Te da las especificaciones de tu ordenador</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="img/descargapdf.png" alt="Diagnóstico y Optimización" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">Especificaciones Técnicas</h2>
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sistemas Operativos</td>
+                        <td>Windows 11 y Windows 10</td>
+                    </tr>
+                    <tr>
+                        <td>Requisitos Mínimos</td>
+                        <td>Procesador dual-core, 2GB RAM, 100MB espacio en disco</td>
+                    </tr>
+                    <tr>
+                        <td>Actualizaciones</td>
+                        <td>Automáticas, cada 2 semanas aprox.</td>
+                    </tr>
+                    <tr>
+                        <td>Compatibilidad Hardware</td>
+                        <td>Compatible con CPUs de NVIDIA.</td>
+                    </tr>
+                    <tr>
+                        <td>Idiomas</td>
+                        <td>Español y Inglés.</td>
+                    </tr>
+                    <tr>
+                        <td>Soporte Técnico</td>
+                        <td>Comunidad activa, documentación completa, soporte por correo electrónico</td>
+                    </tr>
+                    <tr>
+                        <td>Licencia</td>
+                        <td>Open Source (GPL v3)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Leo-G transformó mi experiencia de monitoreo de hardware. Antes solía utilizar 3 programas diferentes, ahora todo está en una interfaz elegante y efectiva.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MR</div>
+                            <div>
+                                <div class="author-name">Miguel Rodríguez</div>
+                                <div class="author-title">Ingeniero de Sistemas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Como gamer, necesitaba una herramienta que me permitiera monitorizar mi PC durante las sesiones de juego sin afectar el rendimiento. Leo-G es simplemente perfecto para ello.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">LC</div>
+                            <div>
+                                <div class="author-name">Laura Castillo</div>
+                                <div class="author-title">Streamer y Creadora de Contenido</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Potencia la gestión de tu hardware con Leo-G</h2>
+                <p>Únete a la comunidad de usuarios que ya disfrutan de un sistema optimizado y controlado</p>
+                <a href="descarga.html" class="btn btn-primary">Descargar Gratis</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Leo-G</h3>
+                    <ul class="footer-links">
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="casos-exito.html">Casos de Éxito</a></li>
+                        <li><a href="prensa.html">Novedades</a></li>
+                        <li><a href="contribuir.html">Contribuir al Proyecto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="caracteristicas.html">Características</a></li>
+                        <li><a href="versiones.html">Versiones</a></li>
+                        <li><a href="novedades.html">Novedades</a></li>
+                        <li><a href="hoja-ruta.html">Hoja de Ruta</a></li>
+                        <li><a href="codigo-fuente.html">Código Fuente</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="documentacion.html">Documentación</a></li>
+                        <li><a href="tutoriales.html">Tutoriales</a></li>
+                        <li><a href="foros.html">Foros</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="glosario.html">Glosario</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Comunidad</h3>
+                    <ul class="footer-links">
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="soporte.html">Soporte</a></li>
+                        <li><a href="github.html">GitHub</a></li>
+                        <li><a href="discord.html">Discord</a></li>
+                        <li><a href="reportar-bug.html">Reportar Bug</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Leo-G. Software Libre.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script básico para el menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('open');
+            });
+            
+            // Animación simple para las secciones al hacer scroll
+            const featureSections = document.querySelectorAll('.feature-section');
+            
+            window.addEventListener('scroll', function() {
+                featureSections.forEach(section => {
+                    const sectionPosition = section.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (sectionPosition < screenPosition) {
+                        section.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Inicializar con opacidad 0
+            featureSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transition = 'opacity 0.6s ease';
+            });
+            
+            // Disparar el evento scroll para inicializar
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>
